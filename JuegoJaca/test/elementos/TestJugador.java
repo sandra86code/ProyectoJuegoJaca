@@ -330,7 +330,7 @@ class TestJugador {
 		for(int i=0; i<30; i++) {
 			try {
 				resultado = j.encuentraRoca();
-				assertTrue(resultado==1 || resultado==2);
+				assertTrue((resultado==1 && j.getPlayer().getMagia()>4) || resultado==2);
 			} catch (JugadorException e) {
 				System.out.println("Excepción que no debería haberse lanzado." + e.getMessage());
 			}
