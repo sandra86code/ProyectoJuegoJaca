@@ -111,10 +111,10 @@ class TestJugador {
 		Jugador j = new Jugador(PlayerType.OGRO);
 		try {
 			j.setDinero(Constantes.NUM_DINERO);
+			assertEquals(Constantes.NUM_DINERO, j.getDinero());
 		} catch (JugadorException e) {
 			System.out.println("Excepción que no debería haberse lanzado.");
 		}
-		assertEquals(Constantes.NUM_DINERO, j.getDinero());
 	}
 	
 	@Test
@@ -326,7 +326,6 @@ class TestJugador {
 	public void testJugadorEncuentraRocaSinGema() {
 		Jugador j = new Jugador(PlayerType.MAGO);
 		int resultado;
-		int magia;
 		for(int i=0; i<30; i++) {
 			try {
 				resultado = j.encuentraRoca();

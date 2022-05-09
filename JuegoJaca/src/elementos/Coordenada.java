@@ -165,6 +165,7 @@ public class Coordenada {
 	/**
 	 * Clone. Devuelve una nueva coordenada con los mismos atributos que la coordenada que lo llama
 	 */
+	@Override
 	public Coordenada clone() {
 		return new Coordenada(this.x,this.y);
 	}
