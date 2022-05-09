@@ -39,9 +39,4 @@ public enum ElementType {
 	public String getImage() {
 		return image;
 	}
-	
-	
-	
-	
-
 }

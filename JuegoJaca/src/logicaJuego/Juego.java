@@ -13,7 +13,54 @@ public class Juego {
 	private int jugadorJuega;
 	private int dado; // Dado para ver los movimientos del jugador que juega
 
-
+	/**
+	 * Creación del juego, recibe un array con el orden de los jugadores que han elegido
+	 * @param jugadores
+	 * @throws JuegoException
+	 */
+	public Juego​(PlayerType[] jugadores) throws JuegoException {
+		
+	}
+	
+	/**
+	 * Método privado que crea los elementos del tablero menos los jugadores
+	 */
+	private void crearTablero() {
+		
+	}
+	
+	/**
+	 * Método privado para crear un jugador
+	 * @param tipo
+	 * @return true if succesfully
+	 */
+	private boolean crearJugador​(PlayerType tipo) {
+		
+	}
+	
+	
+	/**
+	 * Crear las rocas en el tablero
+	 */
+	private void crearRocas() {
+	
+	}
+	
+	/**
+	 * Crear las gemas en el tablero
+	 */
+	private void crearGemas() {
+		
+	}
+	
+	/**
+	 * Crear el dinero en el tablero
+	 */
+	private void crearDinero() {
+		
+	}
+	
+	
 	/**
 	 * Escribe el tablero en formato no gráfico. Devuelve el string con la
 	 * información
@@ -43,8 +90,16 @@ public class Juego {
 		resul.delete(resul.length() - 5, resul.length());
 		return resul.toString();
 	}
-
-
+	
+	/**
+	 * Devuelve un boolean que indica si está terminado o no. Un juego está termindo si sólo queda un jugador 
+	 * o si algún jugador tiene todo el dinero
+	 * @return
+	 */
+	public boolean isTerminado() {
+		
+	}
+	
 	/**
 	 * Simplemente escribe una barra en pantalla
 	 * 
@@ -59,11 +114,72 @@ public class Juego {
 		resul.append("\n");
 		return resul.toString();
 	}
-
-
+	
+	/**
+	 * Función que imprime, devuelve, el nombre de los jugadores actuales. 
+	 * El formato es El jugador 1 es un xxx El jugador 2 es un xxx ......................
+	 * @return
+	 */
+	public String imprimeNombreJugadores() {
+		
+	}
+	
+	/**
+	 * Función que imprime, devuelve, los jugadores con sus valores de dinero, pociones y gemas.
+	 * @return
+	 */
+	public String imprimeValoreJugadores() {
+		
+	}
+	
+	/**
+	 * Elimina el jugador que está en la coordenadas que se le pasa por parámetro 
+	 * Tiene que borrar el jugador del tablero y de la lista de coordenadas del jugadores
+	 * @param coord
+	 */
+	private void eliminarJugador​(Coordenada coord) {
+		
+	}
+	
+	/**
+	 * Devuelve una coordenada que indica a donde se deberá mover el jugador. 
+	 * Si no es una dirección válida N, S, E, O deberá lanzar una exception
+	 * @param direction
+	 * @return
+	 * @throws JuegoException
+	 */
+	private Coordenada getNextPosition​(char direction) throws JuegoException {
+		if(direction!='N' && direction!='S' && direction!='E' && direction!='O') {
+			throw new JuegoException("Error en la dirección.");
+		}
+		Coordenada c = coordenadaJugadores.get(jugadorJuega).clone();
+		if(direction=='N') {
+			c.goUp();
+		}else if(direction=='S') {
+			c.goDown();
+		}else if(direction=='E') {
+			c.goRight();
+		}else {
+			c.goLeft();
+		}
+		return c;
+	}
+	
+	/**
+	 * Cambia el jugador que juega a la posición indicada por parámetro. 
+	 * Para cambiar un jugador a una determinada posición, hay que obtener la coordenada actual de jugador y el jugador. 
+	 * Borrar del tablero la coordenada actual e insertar el jugador en la nueva coordenada. 
+	 * Por último, en la lista de las coordenadas de los jugadores, hay que actualizar las coordenadas.
+	 * @param coord
+	 */
+	private void cambiaJugadorAPosicion​(Coordenada coord) {
+		
+	}
+	
+	
+	
 	/**
 	 * Mover el jugador
-	 * 
 	 * @param direction
 	 * @return
 	 * @throws JuegoException
@@ -155,5 +271,73 @@ public class Juego {
 		return resul;
 	}
 
+	/**
+	 * Actualiza la variable jugadorJuega al próximo jugador. Si es el último de la lista se debe empezar por el principio.
+	 */
+	public void proximoJugador() {
+		
+	}
 	
+	/**
+	 * Devuelve la información del ganador si sólo hay jugador o si no, si hay alguien que tiene todo el dinero
+	 * @return the string
+	 */
+	public String getGanador() {
+		
+	}
+	
+	/**
+	 * Devuelve el nombre del jugador al que le toca jugar
+	 * @return
+	 */
+	public String getNombreJuegadorQueJuega() {
+		
+	}
+	
+	/**
+	 * Devuelve el número de movimientos que el jugador que está jugando debe hacer
+	 * @return
+	 */
+	public int getMovimientoJugador() {
+		
+	}
+	
+	/**
+	 * Devuelve el valor actual del dado
+	 * @return
+	 */
+	public int getValorDado() {
+		
+	}
+	
+	/**
+	 * Decrementa el valor actual del dado
+	 */
+	public void decrementaDado() {
+		
+	}
+	
+	/**
+	 * Asigna valor del dado con los movimientos para el jugador que juega le ha salido
+	 */
+	public void setDado() {
+		
+	}
+	
+	/**
+	 * Devuelve el elemento que está en la coordenada coord. Devuelve el elemento, no una copia
+	 * @param coord
+	 * @return
+	 */
+	public Element obtenerElementoTablero​(Coordenada coord) {
+		
+	}
+	
+	/**
+	 * Obtiene la coordenada del jugador que está jugando actualmente
+	 * @return
+	 */
+	public Coordenada obtenerCoordenadaJugadorJuega() {
+		
+	}
 }
