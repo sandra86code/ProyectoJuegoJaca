@@ -192,7 +192,7 @@ public class Juego {
 			if(tablero.containsKey(c)) {
 				Jugador jugador = (Jugador) tablero.get(c);
 				contador++;
-				mensaje.append("El jugador " + contador + "es un " + jugador.getNombre() + "\n");
+				mensaje.append("El jugador " + contador + " es un " + jugador.getNombre() + "\n");
 			}
 		}
 		return mensaje.toString();
@@ -206,8 +206,7 @@ public class Juego {
 		StringBuilder mensaje = new StringBuilder();
 		for(Coordenada c : coordenadaJugadores) {
 			if(tablero.containsKey(c)) {
-				Jugador jugador = (Jugador) tablero.get(c);
-				mensaje.append(jugador.toString());
+				mensaje.append(((Jugador) tablero.get(c)).resumen()+"\n");
 			}
 		}
 		return mensaje.toString();
