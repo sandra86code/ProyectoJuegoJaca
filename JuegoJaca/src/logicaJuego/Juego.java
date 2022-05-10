@@ -21,8 +21,12 @@ public class Juego {
 		this.tablero = new HashMap<>();
 		this.coordenadaJugadores = new ArrayList<>();
 		crearTablero();
+		
 		for(int i=0; i<jugadores.length; i++) {
-			boolean creado = crearJugador​(jugadores[i]);	
+			boolean creado = crearJugador​(jugadores[i]);
+			while(!creado) {
+				creado = crearJugador​(jugadores[i]);
+			}
 		}
 	}
 	
@@ -45,11 +49,11 @@ public class Juego {
 		boolean creado = false;
 		Jugador jugador = new Jugador(tipo);
 		Coordenada coordenada = new Coordenada();
-		while(coordenadaJugadores.contains(coordenada) && tablero.containsKey(coordenada)) {
-			coordenada = new Coordenada();
+		if(!coordenadaJugadores.contains(coordenada) && !tablero.containsKey(coordenada)) {
+			coordenadaJugadores.add(coordenada);
+			tablero.put(coordenada, jugador);
+			creado = true;
 		}
-		coordenadaJugadores.add(coordenada);
-		tablero.put(coordenada, jugador);
 		return creado;
 	}
 	
