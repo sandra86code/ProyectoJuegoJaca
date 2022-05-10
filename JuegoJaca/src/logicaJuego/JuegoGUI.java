@@ -95,10 +95,10 @@ public class JuegoGUI extends Juego implements ActionListener {
 		ImageIcon imageIcon;
 		// Si no hay nada se pone el elemento por defecto
 
-		if (super.obtenerElementoTablero(new Coordenada(x, y)) == null) {
+		if (super.obtenerElementoTablero​(new Coordenada(x, y)) == null) {
 			imageIcon = new ImageIcon(System.getProperty("user.dir") + "/img/nada.png");
 		} else {
-			switch (super.obtenerElementoTablero(new Coordenada(x, y)).getType().getSymbol()) {
+			switch (super.obtenerElementoTablero​(new Coordenada(x, y)).getType().getSymbol()) {
 			case 'D':
 				imageIcon = new ImageIcon(System.getProperty("user.dir") + "/img/dinero.png");
 				break;
@@ -139,7 +139,7 @@ public class JuegoGUI extends Juego implements ActionListener {
 	 */
 	public void setInformacion() {
 
-		this.informacion.setText("<html>" + super.imprimeValoreJugadores().replaceAll("\n", "<br>") + "<br>"
+		this.informacion.setText("<html>" + super.imprimeValoresJugadores().replaceAll("\n", "<br>") + "<br>"
 				+ super.imprimeNombreJugadores().replaceAll("\n", "<br><br>") + "</html>");
 	}
 
@@ -165,14 +165,12 @@ public class JuegoGUI extends Juego implements ActionListener {
 							try {
 								resul = super.movePlayer('S');
 							} catch (JuegoException | JugadorException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						} else if (j - coord.getY() == -1) {
 							try {
 								resul = super.movePlayer('N');
 							} catch (JuegoException | JugadorException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						} else {
@@ -183,14 +181,12 @@ public class JuegoGUI extends Juego implements ActionListener {
 							try {
 								resul = super.movePlayer('E');
 							} catch (JuegoException | JugadorException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						} else if (i - coord.getX() == -1) {
 							try {
 								resul = super.movePlayer('O');
 							} catch (JuegoException | JugadorException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						} else {

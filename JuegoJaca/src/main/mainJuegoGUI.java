@@ -15,7 +15,7 @@ public class mainJuegoGUI {
 	public static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		try {
 			
 				
@@ -30,7 +30,7 @@ public class mainJuegoGUI {
 			/**
 			 * Hay que elegir qué jugador va a ser cada uno, pero no se permiten jugadores repetidos
 			 */
-			int numJugadores =0;
+			int numJugadores = 0;
 			while (numJugadores < Constantes.NUM_JUGADORES - 1 ) {
 				System.out.print("Elija el tipo de jugador: ");
 				int i =1;
@@ -54,11 +54,5 @@ public class mainJuegoGUI {
 		}catch (JuegoException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
-		
-	
-
 	}
-
 }

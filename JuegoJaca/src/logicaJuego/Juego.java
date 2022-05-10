@@ -2,7 +2,6 @@ package logicaJuego;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import elementos.*;
 
@@ -18,15 +17,23 @@ public class Juego {
 	 * @param jugadores
 	 * @throws JuegoException
 	 */
-	public Juego​(PlayerType[] jugadores) throws JuegoException {
-		
+	public Juego(PlayerType[] jugadores) {
+		this.tablero = new HashMap<>();
+		this.coordenadaJugadores = new ArrayList<>();
+		crearTablero();
+		for(int i=0; i<jugadores.length; i++) {
+			boolean creado = crearJugador​(jugadores[i]);	
+		}
 	}
 	
 	/**
 	 * Método privado que crea los elementos del tablero menos los jugadores
 	 */
 	private void crearTablero() {
-		
+		crearDinero();
+		crearGemas();
+		crearPociones();
+		crearRocas();
 	}
 	
 	/**
@@ -35,7 +42,15 @@ public class Juego {
 	 * @return true if succesfully
 	 */
 	private boolean crearJugador​(PlayerType tipo) {
-		
+		boolean creado = false;
+		Jugador jugador = new Jugador(tipo);
+		Coordenada coordenada = new Coordenada();
+		while(coordenadaJugadores.contains(coordenada) && tablero.containsKey(coordenada)) {
+			coordenada = new Coordenada();
+		}
+		coordenadaJugadores.add(coordenada);
+		tablero.put(coordenada, jugador);
+		return creado;
 	}
 	
 	
@@ -43,23 +58,58 @@ public class Juego {
 	 * Crear las rocas en el tablero
 	 */
 	private void crearRocas() {
-	
+		for(int i=0; i<Constantes.NUM_ROCAS; i++) {
+			Coordenada coordenada = new Coordenada();
+			while(tablero.containsKey(coordenada)) {
+				coordenada = new Coordenada();
+			}
+			Element roca = new Element(ElementType.ROCA);
+			tablero.put(coordenada, roca);
+		}
 	}
 	
 	/**
 	 * Crear las gemas en el tablero
 	 */
 	private void crearGemas() {
-		
+		for(int i=0; i<Constantes.NUM_GEMAS; i++) {
+			Coordenada coordenada = new Coordenada();
+			while(tablero.containsKey(coordenada)) {
+				coordenada = new Coordenada();
+			}
+			Element gema = new Element(ElementType.GEMA);
+			tablero.put(coordenada, gema);
+		}
 	}
 	
 	/**
 	 * Crear el dinero en el tablero
 	 */
 	private void crearDinero() {
-		
+		for(int i=0; i<Constantes.NUM_DINERO; i++) {
+			Coordenada coordenada = new Coordenada();
+			while(tablero.containsKey(coordenada)) {
+				coordenada = new Coordenada();
+			}
+			Element dinero = new Element(ElementType.DINERO);
+			tablero.put(coordenada, dinero);
+		}
 	}
 	
+
+	/**
+	 * Crear las pociones en el tablero
+	 */
+	private void crearPociones() {
+		for(int i=0; i<Constantes.NUM_POCIONES; i++) {
+			Coordenada coordenada = new Coordenada();
+			while(tablero.containsKey(coordenada)) {
+				coordenada = new Coordenada();
+			}
+			Element pocion = new Element(ElementType.POCION);
+			tablero.put(coordenada, pocion);
+		}
+	}
 	
 	/**
 	 * Escribe el tablero en formato no gráfico. Devuelve el string con la
@@ -92,18 +142,29 @@ public class Juego {
 	}
 	
 	/**
-	 * Devuelve un boolean que indica si está terminado o no. Un juego está termindo si sólo queda un jugador 
-	 * o si algún jugador tiene todo el dinero
-	 * @return
+	 * Devuelve un boolean que indica si está terminado o no. 
+	 * Un juego está termindo si sólo queda un jugador o si algún jugador tiene todo el dinero
+	 * @return true si juego terminado
 	 */
 	public boolean isTerminado() {
-		
+		boolean finished = false;
+		if(coordenadaJugadores.size()==1) {
+			finished = true;
+		}else {
+			for(Coordenada c : coordenadaJugadores) {
+				if(tablero.get(c)!=null) {
+					if(((Jugador) this.tablero.get(c)).getDinero() == Constantes.NUM_DINERO) {
+						finished = true;
+					}
+				}
+			}
+		}
+		return finished;
 	}
 	
 	/**
 	 * Simplemente escribe una barra en pantalla
-	 * 
-	 * @return
+	 * @return the string
 	 */
 	private String barra() {
 		StringBuilder resul = new StringBuilder();
@@ -121,15 +182,31 @@ public class Juego {
 	 * @return
 	 */
 	public String imprimeNombreJugadores() {
-		
+		StringBuilder mensaje = new StringBuilder();
+		int contador = 0;
+		for(Coordenada c : coordenadaJugadores) {
+			if(tablero.containsKey(c)) {
+				Jugador jugador = (Jugador) tablero.get(c);
+				contador++;
+				mensaje.append("El jugador " + contador + "es un " + jugador.getNombre() + "\n");
+			}
+		}
+		return mensaje.toString();
 	}
 	
 	/**
 	 * Función que imprime, devuelve, los jugadores con sus valores de dinero, pociones y gemas.
 	 * @return
 	 */
-	public String imprimeValoreJugadores() {
-		
+	public String imprimeValoresJugadores() {
+		StringBuilder mensaje = new StringBuilder();
+		for(Coordenada c : coordenadaJugadores) {
+			if(tablero.containsKey(c)) {
+				Jugador jugador = (Jugador) tablero.get(c);
+				mensaje.append(jugador.toString());
+			}
+		}
+		return mensaje.toString();
 	}
 	
 	/**
@@ -138,7 +215,8 @@ public class Juego {
 	 * @param coord
 	 */
 	private void eliminarJugador​(Coordenada coord) {
-		
+		coordenadaJugadores.remove(coord);
+		tablero.remove(coord);
 	}
 	
 	/**
@@ -173,7 +251,12 @@ public class Juego {
 	 * @param coord
 	 */
 	private void cambiaJugadorAPosicion​(Coordenada coord) {
-		
+		Coordenada c = coordenadaJugadores.get(jugadorJuega); // Coordenada jugador
+		Jugador jug = (Jugador) tablero.get(c); // Jugador
+		tablero.remove(c); //Eliminar clave/valor mapa
+		coordenadaJugadores.remove(jugadorJuega); //Eliminar coordenada del jugador
+		coordenadaJugadores.add(jugadorJuega, coord); //Cambiar la coordenada del jugador
+		tablero.put(coord, jug); //Añadir jugador con su nueva coordenada
 	}
 	
 	
@@ -190,7 +273,7 @@ public class Juego {
 		String resul = "";
 		Jugador jugador = (Jugador) this.tablero.get(this.coordenadaJugadores.get(jugadorJuega));
 
-		Coordenada coordDestino = getNextPosition(direction);
+		Coordenada coordDestino = getNextPosition​(direction);
 
 		// Tengo que ver que hay en la nueva casilla
 		Element elemento = this.tablero.get(coordDestino);
@@ -212,7 +295,7 @@ public class Juego {
 					break;
 				case Constantes.GANA_MUERE:
 					resul = "El jugador " + jugador.getNombre() + " gana. El enemigo muere";
-					this.eliminarJugador(coordDestino);
+					this.eliminarJugador​(coordDestino);
 					// Si se elimina el jugador que juega el dado se pone a 0 para que no siga
 					// tirando
 					break;
@@ -224,7 +307,7 @@ public class Juego {
 					break;
 				case Constantes.PIERDE_MUERE:
 					resul = "El enemigo " + enemigo.getNombre() + " gana. El jugador muere";
-					this.eliminarJugador(this.coordenadaJugadores.get(jugadorJuega));
+					this.eliminarJugador​(this.coordenadaJugadores.get(jugadorJuega));
 					dado = 0;
 					// Decrementamos en uno el jugador, para que no se salte al siguiente
 					// ya que al borrarlo el siguiente apunta al siguiente, y al incrementarlo
@@ -238,12 +321,12 @@ public class Juego {
 				switch (resultadoRoca) {
 				case Constantes.ROMPE_ROCA_CON_GEMA:
 					resul = "El jugador " + jugador.getNombre() + " rompe la roca con una gema";
-					this.cambiaJugadorAPosicion(coordDestino);
+					this.cambiaJugadorAPosicion​(coordDestino);
 					break;
 
 				case Constantes.GANA_A_LA_ROCA:
 					resul = "El jugador " + jugador.getNombre() + " gana a la roca";
-					this.cambiaJugadorAPosicion(coordDestino);
+					this.cambiaJugadorAPosicion​(coordDestino);
 					break;
 
 				case Constantes.PIERDE_A_LA_ROCA:
@@ -252,20 +335,20 @@ public class Juego {
 				}
 			} else if (elemento.getType() == ElementType.GEMA) {
 				jugador.encuentraGema();
-				this.cambiaJugadorAPosicion(coordDestino);
+				this.cambiaJugadorAPosicion​(coordDestino);
 
 			} else if (elemento.getType() == ElementType.DINERO) {
 				jugador.encuentraDinero();
-				this.cambiaJugadorAPosicion(coordDestino);
+				this.cambiaJugadorAPosicion​(coordDestino);
 
 			} else if (elemento.getType() == ElementType.POCION) {
 				jugador.encuentraPocion();
-				this.cambiaJugadorAPosicion(coordDestino);
+				this.cambiaJugadorAPosicion​(coordDestino);
 
 			}
 
 		} else {
-			this.cambiaJugadorAPosicion(coordDestino);
+			this.cambiaJugadorAPosicion​(coordDestino);
 		}
 
 		return resul;
@@ -275,7 +358,11 @@ public class Juego {
 	 * Actualiza la variable jugadorJuega al próximo jugador. Si es el último de la lista se debe empezar por el principio.
 	 */
 	public void proximoJugador() {
-		
+		if(this.jugadorJuega == Constantes.NUM_JUGADORES-1) {
+			this.jugadorJuega = 0;
+		}else {
+			this.jugadorJuega++;
+		}
 	}
 	
 	/**
@@ -283,7 +370,22 @@ public class Juego {
 	 * @return the string
 	 */
 	public String getGanador() {
-		
+		String mensaje = null;
+		Coordenada c;
+		Jugador j;
+		if(coordenadaJugadores.size() == 1) {
+			c = coordenadaJugadores.get(0);
+			j = (Jugador) tablero.get(c);
+			mensaje = j.resumen();
+		}else {
+			for(Coordenada coor : coordenadaJugadores) {
+				j = (Jugador) tablero.get(coor);
+				if(j.getDinero() == Constantes.NUM_DINERO) {
+					mensaje = j.resumen();
+				}
+			}
+		}
+		return mensaje;
 	}
 	
 	/**
@@ -291,7 +393,7 @@ public class Juego {
 	 * @return
 	 */
 	public String getNombreJuegadorQueJuega() {
-		
+		return ((Jugador) tablero.get(coordenadaJugadores.get(jugadorJuega))).getNombre();
 	}
 	
 	/**
@@ -299,7 +401,7 @@ public class Juego {
 	 * @return
 	 */
 	public int getMovimientoJugador() {
-		
+		return ((Jugador) tablero.get(coordenadaJugadores.get(jugadorJuega))).getVelocidadParaLuchar();
 	}
 	
 	/**
@@ -307,21 +409,21 @@ public class Juego {
 	 * @return
 	 */
 	public int getValorDado() {
-		
+		return dado;
 	}
 	
 	/**
 	 * Decrementa el valor actual del dado
 	 */
 	public void decrementaDado() {
-		
+		this.dado--;
 	}
 	
 	/**
 	 * Asigna valor del dado con los movimientos para el jugador que juega le ha salido
 	 */
 	public void setDado() {
-		
+		this.dado = ((Jugador) tablero.get(coordenadaJugadores.get(jugadorJuega))).getVelocidadParaLuchar();
 	}
 	
 	/**
@@ -330,7 +432,7 @@ public class Juego {
 	 * @return
 	 */
 	public Element obtenerElementoTablero​(Coordenada coord) {
-		
+		return tablero.get(coord);
 	}
 	
 	/**
@@ -338,6 +440,6 @@ public class Juego {
 	 * @return
 	 */
 	public Coordenada obtenerCoordenadaJugadorJuega() {
-		
+		return coordenadaJugadores.get(jugadorJuega);
 	}
 }

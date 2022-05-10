@@ -56,7 +56,7 @@ public class mainJuego {
 			
 			System.out.println(juego);
 			System.out.println(juego.imprimeNombreJugadores());
-			System.out.println(juego.imprimeValoreJugadores());
+			System.out.println(juego.imprimeValoresJugadores());
 			while (!juego.isTerminado()) {
 				/*********************
 				 * Dado. Hay que revisarlo
@@ -77,7 +77,7 @@ public class mainJuego {
 					
 					
 					System.out.println(juego);
-					System.out.println(juego.imprimeValoreJugadores());
+					System.out.println(juego.imprimeValoresJugadores());
 
 				}
 				juego.proximoJugador();
