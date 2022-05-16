@@ -33,25 +33,9 @@ class TestJuego {
 	
 //	@Test
 //	public void testMovePlayerArriba() throws JuegoException, JugadorException {
-//		Juego juego = listaJugadoresTerminadoUnJugador();
-//		String solucion1 = "";
-//		String solucion2 = "Empate entre los jugadores";
-//		String solucion3 = "El jugador " + juego.getNombreJuegadorQueJuega() + " gana. El enemigo pierde una pócima.";
-//		String solucion4 = "El jugador " + juego.getNombreJuegadorQueJuega() + " gana. Le quita el dinero al enemigo";
-//		String solucion5 = "El jugador " + juego.getNombreJuegadorQueJuega() + " gana. El enemigo muere";
-//		String solucion6 = "El enemigo " + enemigo.getNombre() + " gana. El jugador pierde una pócima.";
-//		String solucion7 = "El enemigo " + enemigo.getNombre() + " gana. Le quita el dinero al jugador";
-//		String solucion8 = "El enemigo " + enemigo.getNombre() + " gana. El jugador muere";
-//		String solucion9 = "El jugador " + juego.getNombreJuegadorQueJuega() + " rompe la roca con una gema";
-//		while(!juego.isTerminado()) {
-//			String resultado = juego.movePlayer('N');
-//			String solucion1 = "";
-//			String solucion2 = "Empate entre los jugadores";
-//			String solucion
-//			assertTrue(resultado=="Empate entre los jugadores")
-//		
+//
 //	}
-//	
+	
 //	@Test
 //	public void testMovePlayerAbajo() {
 //	
