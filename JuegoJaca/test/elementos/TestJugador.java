@@ -101,7 +101,7 @@ class TestJugador {
 	@Test
 	public void testgetVelocidadParaLucharOgro() {
 		Jugador j = new Jugador(PlayerType.OGRO);
-		for(int i=0; i<200; i++) { //Velocidad = 4
+		for(int i=0; i<1000; i++) { //Velocidad = 4
 			assertTrue(j.getVelocidadParaLuchar()>=1 && j.getVelocidadParaLuchar()<=Constantes.OGRO_VELOCIDAD);
 		}
 	}

@@ -188,7 +188,6 @@ public class Jugador extends Element {
 		}else if(fuerzaJugador > fuerzaEnemigo) {
 			if(enemigo.getPociones() > 0) {
 				resultado = Constantes.GANA_USA_POCIMA;
-				this.setPociones(this.getPociones()+1);
 				enemigo.setPociones(enemigo.getPociones()-1);
 			}else if(enemigo.getDinero() > 0) {
 				resultado = Constantes.GANA_DINERO;
@@ -200,7 +199,6 @@ public class Jugador extends Element {
 		}else {
 			if(this.getPociones() > 0) {
 				resultado = Constantes.PIERDE_USA_POCIMA;
-				enemigo.setPociones(enemigo.getPociones()+1);
 				this.setPociones(this.getPociones()-1);
 			}else if(this.getDinero() > 0) {
 				resultado = Constantes.PIERDE_DINERO;

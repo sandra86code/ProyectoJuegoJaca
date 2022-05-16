@@ -41,7 +41,7 @@ public class mainJuegoGUI {
 
 				int tipo = Integer.parseInt(teclado.nextLine());
 				if (tipo >=1 && tipo < jugadores.size()) {
-					ordenJugadores[numJugadores++]= jugadores.get(tipo-1);
+					ordenJugadores[numJugadores++] = jugadores.get(tipo-1);
 					jugadores.remove(tipo-1);
 				}else {
 					System.out.println("Tipo no permitido. Inténtelo de nuevo");

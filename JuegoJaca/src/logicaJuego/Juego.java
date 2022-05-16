@@ -275,23 +275,19 @@ public class Juego {
 		// Si no es una dirección válida, mando un exception
 		String resul = "";
 		Jugador jugador = (Jugador) this.tablero.get(this.coordenadaJugadores.get(jugadorJuega));
-
 		Coordenada coordDestino = getNextPosition​(direction);
-
 		// Tengo que ver que hay en la nueva casilla
 		Element elemento = this.tablero.get(coordDestino);
-
 		if (elemento != null) { // Hay algo en la casilla
 			if (elemento instanceof Jugador) {
-
 				Jugador enemigo = (Jugador) elemento;
 				int resultadoLucha = jugador.lucha(enemigo);
 				switch (resultadoLucha) {
 				case Constantes.EMPATE:
-					resul = "Empate entre los jugadore";
+					resul = "Empate entre los jugadores";
 					break;
 				case Constantes.GANA_USA_POCIMA:
-					resul = "El jugador " + jugador.getNombre() + " gana. Le quita una pócima al enemigo";
+					resul = "El jugador " + jugador.getNombre() + " gana. El enemigo pierde una pócima.";
 					break;
 				case Constantes.GANA_DINERO:
 					resul = "El jugador " + jugador.getNombre() + " gana. Le quita el dinero al enemigo";
@@ -299,11 +295,9 @@ public class Juego {
 				case Constantes.GANA_MUERE:
 					resul = "El jugador " + jugador.getNombre() + " gana. El enemigo muere";
 					this.eliminarJugador​(coordDestino);
-					// Si se elimina el jugador que juega el dado se pone a 0 para que no siga
-					// tirando
 					break;
 				case Constantes.PIERDE_USA_POCIMA:
-					resul = "El enemigo " + enemigo.getNombre() + " gana. Le quita una pócima al jugador";
+					resul = "El enemigo " + enemigo.getNombre() + " gana. El jugador pierde una pócima.";
 					break;
 				case Constantes.PIERDE_DINERO:
 					resul = "El enemigo " + enemigo.getNombre() + " gana. Le quita el dinero al jugador";
@@ -311,7 +305,7 @@ public class Juego {
 				case Constantes.PIERDE_MUERE:
 					resul = "El enemigo " + enemigo.getNombre() + " gana. El jugador muere";
 					this.eliminarJugador​(this.coordenadaJugadores.get(jugadorJuega));
-					dado = 0;
+					this.dado = 0;
 					// Decrementamos en uno el jugador, para que no se salte al siguiente
 					// ya que al borrarlo el siguiente apunta al siguiente, y al incrementarlo
 					// se le salta
@@ -347,13 +341,10 @@ public class Juego {
 			} else if (elemento.getType() == ElementType.POCION) {
 				jugador.encuentraPocion();
 				this.cambiaJugadorAPosicion​(coordDestino);
-
 			}
-
 		} else {
 			this.cambiaJugadorAPosicion​(coordDestino);
 		}
-
 		return resul;
 	}
 
@@ -361,7 +352,7 @@ public class Juego {
 	 * Actualiza la variable jugadorJuega al próximo jugador. Si es el último de la lista se debe empezar por el principio.
 	 */
 	public void proximoJugador() {
-		if(this.jugadorJuega == Constantes.NUM_JUGADORES-1) {
+		if(this.jugadorJuega == coordenadaJugadores.size()-1) {
 			this.jugadorJuega = 0;
 		}else {
 			this.jugadorJuega++;
