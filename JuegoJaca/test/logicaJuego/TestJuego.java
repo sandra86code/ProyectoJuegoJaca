@@ -31,26 +31,6 @@ class TestJuego {
 	}
 	
 	
-//	@Test
-//	public void testMovePlayerArriba() throws JuegoException, JugadorException {
-//
-//	}
-	
-//	@Test
-//	public void testMovePlayerAbajo() {
-//	
-//	}
-//	
-//	@Test
-//	public void testMovePlayerDerecha() {
-//	
-//	}
-//	
-//	@Test
-//	public void testMovePlayerIzquierda() {
-//	
-//	}
-	
 	
 	@Test
 	public void testNombreJugadorQueJuegaUltimaPosicion() {
@@ -79,11 +59,12 @@ class TestJuego {
 		
 	}
 	
-//	@Test
-//	public void testGetGanadorQuedaUno() {
-//		Juego juego = listaJugadoresTerminadoUnJugador();
-//		
-//	}
+	@Test
+	public void testGetGanadorQuedaUno() {
+		PlayerType[] jugadores = {PlayerType.GUERRERO};
+		Juego juego = new Juego(jugadores);
+		assertEquals("Jugador: GUERRERO Dinero: 0 Gemas: 0 Pociones: 0", juego.getGanador());
+	}
 	
 	
 	@Test

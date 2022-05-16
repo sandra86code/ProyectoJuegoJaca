@@ -65,8 +65,17 @@ class TestCoordenada {
 	public void testCoordenadasNoIguales() {
 		Coordenada c1 = new Coordenada(2, 7);
 		Coordenada c2 = new Coordenada(2, 6);
+		Coordenada c3 = null;
 		assertNotEquals(c1, c2);
+		assertNotEquals(c1, c3);
 	}
+	
+	@Test
+	public void testToString() {
+		Coordenada c1 = new Coordenada(2, 7);
+		assertEquals("Coordenada [x = 2, y = 7]", c1.toString());
+	}
+	
 	
 	@Test
 	public void testCoordenadaGoRightCorrecta() {

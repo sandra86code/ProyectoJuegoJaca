@@ -9,6 +9,25 @@ import logicaJuego.Constantes;
 class TestJugador {
 
 	@Test
+	public void testGetsDeJugador() {
+		Jugador j = new Jugador(PlayerType.ELFO);
+		j.encuentraDinero();
+		j.encuentraGema();
+		j.encuentraPocion();
+		assertTrue(j.getDinero()==1 && j.getGemas()==1 && j.getPociones()==1 && j.getNombre().equalsIgnoreCase("elfo"));
+
+	}
+	
+	@Test
+	public void testResumenJugador() {
+		Jugador j = new Jugador(PlayerType.OGRO);
+		j.encuentraDinero();
+		j.encuentraGema();
+		j.encuentraPocion();
+		assertEquals("Jugador: OGRO Dinero: 1 Gemas: 1 Pociones: 1", j.resumen());
+	}
+	
+	@Test
 	public void testgetFuerzaParaLucharElfo() {
 		Jugador j = new Jugador(PlayerType.ELFO);
 		for(int i=0; i<200; i++) {
@@ -357,4 +376,5 @@ class TestJugador {
 		j.encuentraGema();
 		assertEquals(1, j.getGemas());
 	}
+
 }

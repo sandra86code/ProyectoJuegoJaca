@@ -6,6 +6,21 @@ import org.junit.jupiter.api.Test;
 public class TestElement {
 	
 	@Test
+	public void testGetTypeElemento() {
+		Element e = new Element(ElementType.GEMA);
+		assertTrue(ElementType.GEMA.equals(e.getType()) && e.toString().equals("Element [type = GEMA]"));
+	}
+	
+	@Test
+	public void testElementosNoIguales() {
+		Element e1 = new Element(ElementType.GEMA);
+		Element e2 = new Element(ElementType.ROCA);
+		Element e3 = null;
+		assertNotEquals(e1, e2);
+		assertNotEquals(e1, e3);
+	}
+	
+	@Test
 	public void testElementosRocaIguales() {
 		Element e1 = new Element(ElementType.ROCA);
 		Element e2 = new Element(ElementType.ROCA);
