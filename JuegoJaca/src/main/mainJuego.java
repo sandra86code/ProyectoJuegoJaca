@@ -3,20 +3,17 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import elementos.ElementType;
 import elementos.JugadorException;
 import elementos.PlayerType;
 import logicaJuego.Constantes;
 import logicaJuego.Juego;
 import logicaJuego.JuegoException;
-import logicaJuego.JuegoGUI;
 
 public class mainJuego {
 
 	public static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) throws JugadorException {
-		// TODO Auto-generated method stub
 		
 		try {
 			
