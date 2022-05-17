@@ -81,8 +81,8 @@ class TestJuego {
 	@Test
 	public void testValorDadoCorrecto() {
 		Juego juego = listaJugadoresTerminadoUnJugador();
-		juego.setDado();
 		for(int i=0; i<200; i++) {
+			juego.setDado();
 			assertTrue(juego.getValorDado()>=1 && juego.getValorDado()<=Constantes.ELFO_VELOCIDAD);
 		}
 	}
