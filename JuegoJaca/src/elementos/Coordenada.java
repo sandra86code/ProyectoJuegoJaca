@@ -8,7 +8,7 @@ import logicaJuego.Constantes;
  * The Class Coordenada.
  * @author sandra
  */
-public class Coordenada {
+public class Coordenada implements Cloneable {
 	
 	private int x;
 	private int y;
@@ -164,9 +164,10 @@ public class Coordenada {
 	
 	/**
 	 * Clone. Devuelve una nueva coordenada con los mismos atributos que la coordenada que lo llama
+	 * @throws CloneNotSupportedException 
 	 */
 	@Override
-	public Coordenada clone() {
-		return new Coordenada(this.x,this.y);
+	public Coordenada clone() throws CloneNotSupportedException {
+		return (Coordenada) super.clone();
 	}
 }

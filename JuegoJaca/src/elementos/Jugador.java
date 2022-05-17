@@ -9,6 +9,8 @@ import logicaJuego.Constantes;
  */
 public class Jugador extends Element {
 	
+	private Random r;
+	
 	private int dinero;
 	private int gemas;
 	private PlayerType player;
@@ -41,7 +43,8 @@ public class Jugador extends Element {
 	 * @return the fuerza para luchar
 	 */
 	public int getFuerzaParaLuchar() {
-		return new Random().nextInt(player.getFuerza());
+		this.r = new Random();
+		return r.nextInt(player.getFuerza());
 	}
 	
 	/**
@@ -67,7 +70,8 @@ public class Jugador extends Element {
 	 * @return
 	 */
 	public int getMagiaParaLuchar() {
-		return new Random().nextInt(player.getMagia());
+		this.r = new Random();
+		return r.nextInt(player.getMagia());
 	}
 	
 	/**
@@ -85,7 +89,8 @@ public class Jugador extends Element {
 	 * @return the velocidad para moverse
 	 */
 	public int getVelocidadParaLuchar() {
-		return new Random().nextInt(player.getVelocidad())+1;
+		this.r = new Random();
+		return r.nextInt(player.getVelocidad())+1;
 	}
 
 	/**
@@ -170,11 +175,11 @@ public class Jugador extends Element {
 	 * @param enemigo - el jugador contra el que juega
 	 * @return 
 	 * 0: EMPATE: Hay empate ninguno de los dos gana la lucha 
-	 * 1: GANA_USA_POCIMA: Gana el jugador y se utiliza pocima del enemigo para que no muera 
-	 * 2: GANA_DINERO: Gana el jugador y se lleva todo el dinero del enemigo 
+	 * 1: GANA_USA_POCIMA: Gana el jugador y se utiliza pocima del enemigo para que no muera
+	 * 2: GANA_DINERO: Gana el jugador y se lleva el dinero del enemigo 
 	 * 3: GANA_MUERE; Gana el jugador y el enemigo muere 
 	 * 4: PIERDE_USA_POCIMA: Gana el enemigo y se utiliza pocima del jugador para que no muera 
-	 * 5: PIERDE_DINERO: Gana el enemigo y se lleva todo el dinero del jugador 
+	 * 5: PIERDE_DINERO: Gana el enemigo y se lleva el dinero del jugador
 	 * 6: PIERDE_MUERE: Gana el enemigo y el jugador muere
 	 * @throws JugadorException
 	 */

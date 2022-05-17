@@ -147,7 +147,7 @@ public class Juego {
 	
 	/**
 	 * Devuelve un boolean que indica si está terminado o no. 
-	 * Un juego está termindo si sólo queda un jugador o si algún jugador tiene todo el dinero
+	 * Un juego está termindo si sólo queda un jugador o si algún jugador tiene el total del dinero del tablero
 	 * @return true si juego terminado
 	 */
 	public boolean isTerminado() {
@@ -156,10 +156,8 @@ public class Juego {
 			finished = true;
 		}else {
 			for(Coordenada c : coordenadaJugadores) {
-				if(tablero.get(c)!=null) {
-					if(((Jugador) this.tablero.get(c)).getDinero() == Constantes.NUM_DINERO) {
+				if(tablero.get(c)!=null && ((Jugador) this.tablero.get(c)).getDinero() == Constantes.NUM_DINERO) {
 						finished = true;
-					}
 				}
 			}
 		}
@@ -233,15 +231,20 @@ public class Juego {
 		if(direction!='N' && direction!='S' && direction!='E' && direction!='O') {
 			throw new JuegoException("Error en la dirección.");
 		}
-		Coordenada c = coordenadaJugadores.get(jugadorJuega).clone();
-		if(direction=='N') {
-			c.goUp();
-		}else if(direction=='S') {
-			c.goDown();
-		}else if(direction=='E') {
-			c.goRight();
-		}else {
-			c.goLeft();
+		Coordenada c;
+		try {
+			c = coordenadaJugadores.get(jugadorJuega).clone();
+			if(direction=='N') {
+				c.goUp();
+			}else if(direction=='S') {
+				c.goDown();
+			}else if(direction=='E') {
+				c.goRight();
+			}else {
+				c.goLeft();
+			}
+		} catch (CloneNotSupportedException e) {
+			throw new JuegoException(e.getMessage());
 		}
 		return c;
 	}
@@ -311,6 +314,9 @@ public class Juego {
 					// se le salta
 					this.jugadorJuega--;
 					break;
+				default:
+					resul = "Resultado incorrecto.";
+					break;
 				}
 				// Después de la lucha los jugadores no se mueven
 			} else if (elemento.getType() == ElementType.ROCA) {
@@ -329,7 +335,11 @@ public class Juego {
 				case Constantes.PIERDE_A_LA_ROCA:
 					resul = "El jugador " + jugador.getNombre() + " pierde. No se mueve";
 					break;
+				default:
+					resul = "Resultado incorrecto.";
+					break;
 				}
+				
 			} else if (elemento.getType() == ElementType.GEMA) {
 				jugador.encuentraGema();
 				this.cambiaJugadorAPosicion​(coordDestino);
@@ -360,7 +370,7 @@ public class Juego {
 	}
 	
 	/**
-	 * Devuelve la información del ganador si sólo hay jugador o si no, si hay alguien que tiene todo el dinero
+	 * Devuelve la información del ganador si sólo hay jugador o si no, si hay alguien que tiene el total dinero disponible
 	 * @return the string
 	 */
 	public String getGanador() {

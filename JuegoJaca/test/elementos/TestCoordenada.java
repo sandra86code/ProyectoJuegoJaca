@@ -142,7 +142,7 @@ class TestCoordenada {
 	}
 	
 	@Test
-	public void testClonarCoordenada() {
+	public void testClonarCoordenada() throws CloneNotSupportedException {
 		Coordenada c = new Coordenada(8, 9);
 		Coordenada expected = c.clone();
 		assertNotSame(c, expected);
