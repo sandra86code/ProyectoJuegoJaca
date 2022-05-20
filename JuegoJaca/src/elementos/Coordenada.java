@@ -2,7 +2,8 @@ package elementos;
 
 import java.util.Objects;
 import java.util.Random;
-import logicaJuego.Constantes;
+
+import logicajuego.Constantes;
 
 /**
  * The Class Coordenada.

@@ -4,7 +4,7 @@
  */
 package elementos;
 
-import logicaJuego.Constantes;
+import logicajuego.Constantes;
 
 public enum PlayerType {
 	

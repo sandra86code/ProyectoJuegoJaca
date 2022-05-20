@@ -2,10 +2,11 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import elementos.PlayerType;
-import logicaJuego.Constantes;
-import logicaJuego.JuegoException;
-import logicaJuego.JuegoGUI;
+import logicajuego.Constantes;
+import logicajuego.JuegoException;
+import logicajuego.JuegoGUI;
 
 public class mainJuegoGUI {
 

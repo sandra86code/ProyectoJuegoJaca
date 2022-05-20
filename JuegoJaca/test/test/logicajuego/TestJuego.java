@@ -1,10 +1,15 @@
-package logicaJuego;
+package test.logicajuego;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
 import elementos.Coordenada;
 import elementos.Jugador;
+import elementos.JugadorException;
 import elementos.PlayerType;
+import logicajuego.Constantes;
+import logicajuego.Juego;
+import logicajuego.JuegoException;
 
 class TestJuego {
 
@@ -96,4 +101,26 @@ class TestJuego {
 		assertEquals(dado-1, juego.getValorDado());
 	}
 	
+	@Test
+	public void testMovePlayerErrorNoValido() {
+		Juego juego = listaJugadoresTerminadoUnJugador();
+		try {
+			juego.movePlayer('.');
+			fail("Error. La excepción no ha sido lanzada.");
+		} catch (JuegoException | JugadorException e) {
+			System.out.println("Excepción correcta: " + e.getMessage());
+		}
+		
+	}
+	
+	@Test
+	public void testMovePlayerNorte() {
+		Juego juego = listaJugadoresTerminadoUnJugador();
+		try {
+			System.out.println(juego.movePlayer('N'));
+		} catch (JuegoException | JugadorException e) {
+			System.out.println("Excepción incorrecta: " + e.getMessage());
+		}
+		
+	}
 }

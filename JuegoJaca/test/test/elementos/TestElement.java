@@ -1,7 +1,10 @@
-package elementos;
+package test.elementos;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import elementos.Element;
+import elementos.ElementType;
 
 public class TestElement {
 	

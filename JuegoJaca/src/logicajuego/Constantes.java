@@ -1,4 +1,4 @@
-package logicaJuego;
+package logicajuego;
 
 public class Constantes {
 	

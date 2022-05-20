@@ -1,10 +1,11 @@
-package elementos;
+package test.elementos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import logicaJuego.Constantes;
+import elementos.Coordenada;
+import logicajuego.Constantes;
 
 class TestCoordenada {
 

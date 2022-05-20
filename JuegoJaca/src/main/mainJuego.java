@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import elementos.JugadorException;
 import elementos.PlayerType;
-import logicaJuego.Constantes;
-import logicaJuego.Juego;
-import logicaJuego.JuegoException;
+import logicajuego.Constantes;
+import logicajuego.Juego;
+import logicajuego.JuegoException;
 
 public class mainJuego {
 

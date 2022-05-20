@@ -1,9 +1,16 @@
-package logicaJuego;
+package logicajuego;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import elementos.*;
+import elementos.Coordenada;
+import elementos.Element;
+import elementos.ElementType;
+import elementos.Jugador;
+import elementos.JugadorException;
+import elementos.PlayerType;
+
+
 
 public class Juego {
 
@@ -220,6 +227,7 @@ public class Juego {
 		tablero.remove(coord);
 	}
 	
+	
 	/**
 	 * Devuelve una coordenada que indica a donde se deberá mover el jugador. 
 	 * Si no es una dirección válida N, S, E, O deberá lanzar una exception
@@ -227,7 +235,7 @@ public class Juego {
 	 * @return
 	 * @throws JuegoException
 	 */
-	private Coordenada getNextPosition​(char direction) throws JuegoException {
+	private Coordenada getNextPosition​ (char direction) throws JuegoException {
 		if(direction!='N' && direction!='S' && direction!='E' && direction!='O') {
 			throw new JuegoException("Error en la dirección.");
 		}

@@ -1,10 +1,13 @@
-package elementos;
+package test.elementos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import logicaJuego.Constantes;
+import elementos.Jugador;
+import elementos.JugadorException;
+import elementos.PlayerType;
+import logicajuego.Constantes;
 
 class TestJugador {
 
