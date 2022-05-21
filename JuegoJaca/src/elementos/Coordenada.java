@@ -37,16 +37,20 @@ public class Coordenada implements Cloneable {
 	}
 	
 	private void setX(int x) {
-		if(x<0 || x>Constantes.TAMANNO-1) {
+		if(x<0) {
 			x=0;
+		}else if(x>Constantes.TAMANNO-1) {
+			x=Constantes.TAMANNO-1;
 		}
 		this.x = x;
 	}
 	
 	
 	private void setY(int y) {
-		if(y<0 || y>Constantes.TAMANNO-1) {
+		if(y<0) {
 			y=0;
+		}else if(y>Constantes.TAMANNO-1) {
+			y=Constantes.TAMANNO-1;
 		}
 		this.y = y;
 	}
@@ -169,6 +173,6 @@ public class Coordenada implements Cloneable {
 	 */
 	@Override
 	public Coordenada clone() throws CloneNotSupportedException {
-		return (Coordenada) super.clone();
+		return new Coordenada(getX(), getY());
 	}
 }

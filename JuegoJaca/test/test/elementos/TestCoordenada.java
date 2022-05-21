@@ -12,7 +12,7 @@ class TestCoordenada {
 	@Test
 	public void testCoordenadaXIncorrectaRangoSuperior() {
 		Coordenada c = new Coordenada(Constantes.TAMANNO,0);
-		assertEquals(0, c.getX());
+		assertEquals(Constantes.TAMANNO-1, c.getX());
 	}
 	
 	@Test
@@ -24,7 +24,7 @@ class TestCoordenada {
 	@Test
 	public void testCoordenadaYIncorrectaRangoSuperior() {
 		Coordenada c = new Coordenada(0,Constantes.TAMANNO);
-		assertEquals(0, c.getY());
+		assertEquals(Constantes.TAMANNO-1, c.getY());
 	}
 	
 	@Test
