@@ -116,7 +116,7 @@ class TestJuego {
 	}
 	
 	@Test
-	public void testMovePlayerNorteConPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerNorteConPocionesGemasYDinero() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -206,7 +206,7 @@ class TestJuego {
 	
 	
 	@Test
-	public void testMovePlayerNorteSinPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerNorteSinPocionesGemasYDinero() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -285,7 +285,7 @@ class TestJuego {
 	
 	
 	@Test
-	public void testMovePlayerSurConPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerSurConPocionesGemasYDinero() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -375,7 +375,7 @@ class TestJuego {
 	
 	
 	@Test
-	public void testMovePlayerSurSinPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerSurSinPocionesGemas() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -453,7 +453,7 @@ class TestJuego {
 	}
 	
 	@Test
-	public void testMovePlayerEsteConPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerEsteConPocionesGemasYDinero() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -542,7 +542,7 @@ class TestJuego {
 	}
 	
 	@Test
-	public void testMovePlayerEsteSinPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerEsteSinPocionesGemas() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -620,7 +620,7 @@ class TestJuego {
 	}
 	
 	@Test
-	public void testMovePlayerOesteConPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerOesteConPocionesGemasYDinero() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
@@ -709,7 +709,7 @@ class TestJuego {
 	}
 	
 	@Test
-	public void testMovePlayerOesteSinPocionesGemasYDineroAmbosJugadores() {
+	public void testMovePlayerOesteSinPocionesGemasYDinero() {
 		for(int i=0; i<5000; i++) {
 			//Creo el juego
 			Juego juego = listaJugadoresTerminadoUnJugador();
